@@ -1,0 +1,41 @@
+<!--
+ * JQeury UI를 이용한 Sortable 기능
+ by hansung park
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<title>jQuery UI Sortable</title>
+<link rel="stylesheet" href="../../style/jquery-ui.css">
+<link rel="stylesheet" href="../../style/common.css">
+<script src="../../script/library/jquery-1.12.2.js"></script>
+<script src="../../script/library/jquery-ui.js"></script>
+<script src="../../script/library/jquery-punch.js"></script>
+<script src="../../script/iconSortable/icon_sortable.js"></script>
+</head>
+
+
+<body onLoad="onLoad()">
+	<div class='container'>
+		<!-- <div class='item group'>Group 1</div>
+		<div class='item group'>Group 2</div>
+		<div class='item icon'>Icon 1</div>
+		<div class='item icon'>Icon 2</div>
+		<div class='item group'>Group 3</div>
+		<div class='item icon'>Icon 3</div>
+		<div class='item icon'>Icon 4</div> -->
+	</div>
+	
+	<!-- Layer popup -->
+	<div id="detailView"
+		style="background-color: rgba(0, 0, 0, 0); display: none;">
+		<div class="modal">
+			<div id='view2'></div>
+		</div>
+	</div>
+</body>
+</html>

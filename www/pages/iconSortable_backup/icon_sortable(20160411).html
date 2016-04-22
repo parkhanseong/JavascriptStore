@@ -1,0 +1,48 @@
+<!--
+ * jQuery UI를 이용한 Sortable 기능
+ by hansung park
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<title>jQuery UI Sortable</title>
+<link rel="stylesheet" href="../../style/jquery-ui.css">
+<link rel="stylesheet" href="../../style/common.css">
+<script src="../../script/library/jquery-1.12.2.js"></script>
+<script src="../../script/library/jquery-ui.js"></script>
+<script src="../../script/library/jquery-punch.js"></script>
+<script src="../../script/iconSortable/icon_sortable.js"></script>
+</head>
+<!-- <img src="../../images/trash_n.png" id="trash_n"/>
+<img src="../../images/trash_p.png" id="trash_p"/> -->
+
+<body onLoad="onLoad()">
+	<div>
+		<div class='container'>
+		
+		<div class='itemcontainer'></div>
+		
+		<div class="trashcontainer ui-sortable">
+		<div class="item trash ui-droppable" data-title="trash">휴지통</div>
+		</div>
+		
+		</div>
+		<!-- Layer popup -->
+		<div id="detailView" style="background-color: rgba(244, 123, 123, 432); display: none;">
+			<div class="modal">
+				<div id='view2' style="height: 340px;"></div>
+			</div>
+		</div>
+		
+	<div>
+	<input class='button-add' onclick="updateJsonData()" type='button' value='추가'>
+	</div>
+	</div>
+	
+
+</body>
+</html>

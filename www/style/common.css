@@ -1,0 +1,132 @@
+.container {
+    padding: 5px;
+    position: absolute;
+    /* width: 100%; */
+}
+
+/* .trashcontainer {
+  position:relative;
+}
+ */
+/* .trashcontainer img {
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.trashcontainer img.top:hover {
+  opacity:0;
+} */
+
+
+.test {
+	width: 100px;
+    height: 100px;
+}
+
+.placeholder {
+    border: 1px dashed gray;
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 3px;
+    padding: 1px;
+    border-radius: 8px;
+}
+
+.item {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    float: left;
+    text-align: center;
+    margin: 3px;
+    padding: 1px;
+    border-radius: 8px;
+}
+
+.garbage {
+    /* border: 1px solid black; */
+    /* postion: relative;
+    z-index: 2; */
+    width: 100px;
+    height: 100px;
+    float: left;
+    text-align: center;
+    margin: 3px;
+    padding: 1px;
+    border-radius: 8px;
+}
+
+/* .garbage2 {
+    border: 1px solid black;
+    postion: relative;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    float: left;
+    text-align: center;
+    margin: 3px;
+    padding: 1px;
+    border-radius: 8px;
+}  */
+
+.garbage-hover {
+	 background-color: #476b6b;
+}
+
+.trash {
+    background-color: #ff8533;
+    /* background-image: url('../../images/trash_n.png'); */ 
+}
+
+.group {
+    background-color: #b3ffe6;   
+}
+
+.icon {
+    background-color: white;
+    line-height: 100px;
+}
+
+.ui-sortable-helper {
+    pointer-events: none;
+}
+
+/*아이콘-그룹에 올렸을때*/
+.hover-target {
+    background-color: #476b6b;
+}
+
+.group > p {
+    color: blue;
+    font-size: small;
+    line-height: .5em; 
+}
+.modal{position:absolute;top:10%;margin:0 10%;padding:10px;width:80%;box-sizing:border-box;color:#fff;border:1px solid #eee;border-radius:10px; background:#111;}
+
+.button-add { 
+	height: 50px; 
+	background: #ddd;
+	width: 47%; 
+	vertical-align: bottom; 
+	bottom: 0; 
+ 	position: fixed;
+	margin-left: 91px;
+	background-image: linear-gradient(bottom, rgb(100,170,30) 0%, rgb(129,212,51) 100%);
+	box-shadow: inset 0px 1px 0px #b2f17f, 0px 6px 0px #3d6f0d;
+	border-radius: 5px; 
+} 
+
+.buttion-add:active{
+	top:7px;
+	background-image: linear-gradient(bottom, rgb(100,170,30) 100%, rgb(129,212,51) 0%);
+	box-shadow: inset 0px 1px 0px #b2f17f, inset 0px -1px 0px #3d6f0d;
+	color: #156785;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+	background: rgb(44,160,202);
+}
+
