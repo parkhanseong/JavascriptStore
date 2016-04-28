@@ -4582,7 +4582,6 @@ var sortable = $.widget("ui.sortable", $.ui.mouse, {
 		for ( var i = this.items.length - 1; i >= 0; i-- ) {
 			this.items[i].item.removeData(this.widgetName + "-item");
 		}
-
 		return this;
 	},
 

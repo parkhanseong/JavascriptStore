@@ -10,44 +10,43 @@
  * 
  * @author Finger
  */
-function onLoad() {
+function onLoad(){
 	console.log("icon_sortable.html loaded");
 	GetJsonData(data);
 	init();
-	groupViewinit();
-}
-
-function groupViewinit(){
-
-	// 정렬 기능
-	$('.view2').sortable({
+	//groupViewinit();
+	//initTest();
+}		
 		
-		items : '.item',
-		containment : '.detailView',
-		cursor : 'move',
-		placeholder : 'placeholder',
-		start : function(e, ui) {
-			$('.group').each(function(i) {
-				var index = $(this).index('.item');
-				$(this).data('pos', index);
-			})	
-		},	
-		sort : function(e, ui) {
-			var $sortable = $(this);
-			var index = ui.placeholder.index();
-			$('.group').each(function(i, el) {
-				if ($(el).data('pos') == index) {
-					console.log('sort index: ' + index);
-					$sortable.sortable('option', 'items', '.icon');
-					$sortable.sortable('refresh');
-				}
-			});
-		},
-		stop : function(e, ui) {
-			$(this).sortable("option", "items", ".item");
-		}
-	}).disableSelection();
-}
+/*function initTest() {
+		//정렬 기능
+		$('.trashcontainer').sortable({
+			items : '.item',
+			containment : '.container',
+			cursor : 'move',
+			placeholder : 'placeholder',
+			start : function(e, ui) {
+				$('.group').each(function(i) {
+					var index = $(this).index('.item');
+					$(this).data('pos', index);
+				})
+			},
+			sort : function(e, ui) {
+				var $sortable = $(this);
+				var index = ui.placeholder.index();
+				$('.group').each(function(i, el) {
+					if ($(el).data('pos') == index){
+						console.log('sort index: ' + index);
+						$sortable.sortable('option', 'items', '.icon');
+						$sortable.sortable('refresh');
+					}
+				});
+			},
+			stop : function(e, ui) {
+				$(this).sortable("option", "items", ".item");
+			}
+		}).disableSelection();
+}*/
 
 /**
  * Sortable initialize
@@ -57,8 +56,8 @@ function groupViewinit(){
 function init() {
 
 	//정렬 기능
-	$('.itemcontainer').sortable({
-		items : '.item',
+	$('.container').sortable({
+		items : '.item, .garbageCss, .groupInitem',
 		containment : '.container',
 		cursor : 'move',
 		placeholder : 'placeholder',
@@ -66,14 +65,13 @@ function init() {
 			$('.group').each(function(i) {
 				var index = $(this).index('.item');
 				$(this).data('pos', index);
-
 			})
 		},
 		sort : function(e, ui) {
 			var $sortable = $(this);
 			var index = ui.placeholder.index();
 			$('.group').each(function(i, el) {
-				if ($(el).data('pos') == index) {
+				if ($(el).data('pos') == index){
 					console.log('sort index: ' + index);
 					$sortable.sortable('option', 'items', '.icon');
 					$sortable.sortable('refresh');
@@ -94,11 +92,10 @@ function init() {
 						drop : function(e, ui) {
 							
 							var localData = window.localStorage.getItem('data');
-							
+
 							if(localData == undefined || localData == ""){
 								localData = data;
 							}
-							
 							if(typeof localData == "string"){
 								var localData = JSON.parse(localData);
 							}
@@ -119,30 +116,31 @@ function init() {
 									if (localData.groups[i].seq == ui.draggable.context.dataset.seq)
 										localData.groups.splice(i, 1);
 								}
+								
 								// group에 있던 item의 groupSeq 값을 삭제해줌.
 								for (var i = 0; i < Object.keys(localData.items).length; i++) {
 									if (localData.items[i].groupSeq == ui.draggable.context.dataset.seq) {
 										localData.items[i].groupSeq = 0;
-										localData.items[i].sort = 1;
+										//localData.items[i].sort = 1;
 									}
 								}
-
+								
 								// icon 삭제
 								var itemIcon = document
 										.getElementsByClassName("itemcontainer")[0]
 										.getElementsByClassName("item icon");
-
+								
 								while (true) {
 									if (itemIcon.length == 0) {
 										break;
 									}
 									itemIcon[0].remove();
 								}
-
+								
 								var itemGroup = document
 										.getElementsByClassName("itemcontainer")[0]
 										.getElementsByClassName("item group");
-
+								
 								while (true) {
 									if (itemGroup.length == 0) {
 										break;
@@ -156,7 +154,6 @@ function init() {
 								
 								GetJsonData(data);
 								init();
-
 							}
 						}
 					}).disableSelection();
@@ -222,7 +219,7 @@ function init() {
 							for (var i = 0; i < Object.keys(localData.items).length; i++) {
 								if (localData.items[i].seq == ui.draggable.context.dataset.seq) {
 									localData.items[i].groupSeq = newGroupNum;
-									localData.items[i].sort = 2;
+									/*localData.items[i].sort = 2;*/
 								}
 							}
 
@@ -230,7 +227,7 @@ function init() {
 								if (localData.items[i].seq == $(this).attr(
 										'data-seq')) {
 									localData.items[i].groupSeq = newGroupNum;
-									localData.items[i].sort = 2;
+									/*localData.items[i].sort = 2;*/
 								}
 							}
 							
@@ -313,11 +310,9 @@ function init() {
 									
 									$(this).children().last().remove();
 									$(this).append("<p style=\"color:red\">" + "&lt;more..." + cc + "&gt;" +"</p>");
-									
 									}
 								}
 							}	
-							
 							
 							// UI에 Item icon 'data-seq' 정보 -> $(this)의 hasItem에
 							// 입력
@@ -354,15 +349,21 @@ function init() {
 			alert("아이콘을 선택 하셨습니다.");
 		} else if ($(this).children().length !== 0) {
 			console.log("그룹 선택");
-			$(".trash").hide();
-			groupView($(this));
-		} else if ($(this).hasClass('group')) {
+			
+			/*$(".trash").hide();
+			groupView($(this));*/
+			
+			/*location.href="groupview.html";*/
+			
+			move_page($(this));
+			
+		} else if ($(this).hasClass('group')){
 			alert("그룹에 아이템이 없습니다.")
-		} else if ($(this).hasClass('garbage')) {
+		} else if ($(this).hasClass('garbage')){
 			alert("휴지통을 선택하셨습니다.")
-		}
-	});
-
+		}	
+	});		
+			
 	// 팝업 이외 영역 선택시 팝업 닫힘
 	$(document)
 			.mousedown(
@@ -391,13 +392,14 @@ function init() {
 													$(".button-add").show();
 													$(".trash").show();
 													$("#view2").empty();
+													/*init();*/
+													//groupViewinit();
 												}
 												/* return onLoad(); */
 											}
 										});
-					});
-	}
-
+						});
+			}
 
 /**
  * 그룹 선택시 하위 아이콘이 팝업에 표시됨.
@@ -405,8 +407,9 @@ function init() {
  * @param {Object}
  *            obj 그룹정보
  * @author Finger
- */
-function groupView(obj) {
+// */
+
+function groupView(obj){
 	// 하위 아이콘 표시
 	/* alert("그룹을 선택 하셨습니다."); */
 	$("#detailView").fadeIn("slow");
@@ -428,7 +431,7 @@ function groupView(obj) {
 				for (j = 0; j < localData.items.length; j++) {
 					if (localData.groups[i].hasItem[k] == localData.items[j].seq) {
 						var html = '';
-						html += "<div class=\"item icon\" style=\"background-color: green;\" "
+						html += "<div class=\"item groupInitem\" style=\"background-color: white;\" "
 								+ "data-seq=\""
 								+ localData.items[j].seq
 								+ "\" data-title=\""
@@ -500,11 +503,11 @@ function GetJsonData(){
 			html += "<div class=\"item group\" data-seq=" + localData.groups[i].seq
 					+ " data-sort=" + localData.groups[i].sort + ">"
 					+ localData.groups[i].title + "</div>";
-
+			
 			$('.itemcontainer').append(html);
-
+			
 		} else if(localData.groups[i].hasItem.length < 4){
-
+			
 			html += "<div class=\"item group\" data-seq=" + localData.groups[i].seq
 					+ " data-sort=" + localData.groups[i].sort + ">"
 					+ localData.groups[i].title;
@@ -514,6 +517,7 @@ function GetJsonData(){
 					/*if (typeof localData.groups[i] === 'undefined') {
 						continue;
 					}*/
+					
 					if(localData.items[k].seq == localData.groups[i].hasItem[j]){
 						html += "<p data-seq=\"" + localData.items[k].seq
 								+ "\" data-title=\"" + localData.items[k].title
@@ -529,7 +533,7 @@ function GetJsonData(){
 			html += "</div>";
 					
 			$('.itemcontainer').append(html);
-		
+			
 		}else if(localData.groups[i].hasItem.length >= 4){
 			html += "<div class=\"item group\" data-seq=" + localData.groups[i].seq
 			+ " data-sort=" + localData.groups[i].sort + ">"
@@ -548,7 +552,7 @@ function GetJsonData(){
 				}
 			}
 
-				var cc = localData.groups[i].hasItem.length-3; 
+			var cc = localData.groups[i].hasItem.length-3; 
 				html+= "<p style=\"color:red\">" + "&lt;more..." + cc + "&gt;" +"</p>";
 					
 				$('.itemcontainer').append(html);
@@ -571,7 +575,7 @@ function GetJsonData(){
 
 // item 추가/삭제
 function updateJsonData(){
-
+	
 	$(".itemcontainer").empty();
 	// var i = Object.keys(data.items).length+1;
 	// slice(-1)[0] 마지막 요소 불러오는 문법.
@@ -612,6 +616,13 @@ function updateJsonData(){
 	init();
 }
 
+function move_page(obj){
+	
+	var groupSeq = obj.attr('data-seq');
+	window.location.href="groupview.html?"+"groupSeq=" + groupSeq;
+
+}		
+
 // sort : 1(아이템), 2(그룹)
 var data = {
 	"items" : [ {
@@ -635,7 +646,7 @@ var data = {
 		"sort" : 1,
 		"groupSeq" : 0
 	} ],
-	"groups" : [ {
+	"groups" : [ /*{
 		"seq" : 1,
 		"title" : "group1",
 		"sort" : 2,
@@ -650,7 +661,7 @@ var data = {
 		"title" : "group3",
 		"sort" : 2,
 		"hasItem" : []
-	} ]
+	}*/ ]
 }
 
 

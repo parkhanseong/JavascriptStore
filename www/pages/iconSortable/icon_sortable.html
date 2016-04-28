@@ -3,7 +3,7 @@
  by hansung park
 -->
 <!doctype html>
-<html lang="en">
+<html lang="en" style="width: 135px;">
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -12,6 +12,8 @@
 <title>jQuery UI Sortable</title>
 <link rel="stylesheet" href="../../style/jquery-ui.css">
 <link rel="stylesheet" href="../../style/common.css">
+<link rel="stylesheet" href="../../style/icon_sortable.css">
+
 <script src="../../script/library/jquery-1.12.2.js"></script>
 <script src="../../script/library/jquery-ui.js"></script>
 <script src="../../script/library/jquery-punch.js"></script>
@@ -21,33 +23,40 @@
 <img src="../../images/trash_p.png" id="trash_p"/> -->
 
 <body onLoad="onLoad()">
-	<div>
-		<div class='container'>
-		
-		<div class='itemcontainer'></div>
-		
-		<div class="trashcontainer ui-sortable">
-			<div class="test garbage">
-			<img class="garbage trash ui-droppable" src="../../images/trash_n.png" id="trash_n"/> 
-			 </div>
-		</div>
-		
-		</div>
 
-		<!-- Layer popup -->
-		<div id="detailView" style="background-color: rgba(244, 123, 123, 432); display: none;">
-			<div class="modal">
-				<div id='view2' style="height: 340px;">
+					<div class='homecontainer'>
+					<button class="homeButton orange" onclick="location.href='../../index.html'" >
+					HOME</button>
+					</div>
+						
+					<div class='addcontainer'>
+					<button class="indexButton orange" onclick="updateJsonData()">ADD</button>
+					</div>
 
+	<div class="containerindex">
+		<div class="outer">
+			<div class="inner">
+				<div class="centered">
+					
+					<div class='container'>
+						<div class='itemcontainer'></div>
+							<div class="trashcontainer ui-sortable">
+							<div class="test garbage">
+							<div class="garbageCss trash ui-droppable" id="trash_n">
+							휴지통</div>
+							</div>
+							</div>
+					</div>
+					
+					
+					
 				</div>
 			</div>
 		</div>
-		
-	<div>
-	<button class='button-add' onclick="updateJsonData()">추가</button>
 	</div>
-	</div>
-	
-
+					
 </body>
 </html>
+
+
+

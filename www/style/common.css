@@ -1,8 +1,23 @@
 .container {
     padding: 5px;
     position: absolute;
+    width: 400px;
     /* width: 100%; */
+    padding-top: 6px;
+    margin-top:36px;
 }
+
+ section {
+      float: left;
+      margin: 10px;
+      width: 420px;
+    }
+    aside {
+      float: right;
+      margin: 10px;
+      width: 200px;
+    }
+
 
 /* .trashcontainer {
   position:relative;
@@ -48,6 +63,17 @@
     border-radius: 8px;
 }
 
+.groupInitem {
+    border: 1px solid black;
+    width: 80px;
+    height: 100px;
+    float: left;
+    text-align: center;
+    margin: 3px;
+    padding: 1px;
+    border-radius: 8px;
+}
+
 .garbage {
     /* border: 1px solid black; */
     /* postion: relative;
@@ -61,6 +87,19 @@
     border-radius: 8px;
 }
 
+.garbageCss {
+    border: 1px solid black;
+    /* postion: relative;
+    z-index: 2; */
+    width: 100px;
+    height: 100px;
+    float: left;
+    text-align: center;
+    margin: 0px;
+    padding: 1px;
+    border-radius: 8px;
+}
+ 
 /* .garbage2 {
     border: 1px solid black;
     postion: relative;
@@ -106,7 +145,7 @@
     font-size: small;
     line-height: .5em; 
 }
-.modal{position:absolute;top:10%;margin:0 10%;padding:10px;width:80%;box-sizing:border-box;color:#fff;border:1px solid #eee;border-radius:10px; background:#111;}
+.modal{position:absolute;top:10%;margin:0 10%;padding:10px;width:80%;box-sizing:border-box;color:#000;border:1px solid #000;border-radius:10px; background:#ECDBDB;}
 
 .button-add { 
 	height: 50px; 
